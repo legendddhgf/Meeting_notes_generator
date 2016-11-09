@@ -65,7 +65,7 @@ while(True):
         except ValueError:
             print(str(speaker) + ": not a valid speaker index")
             continue
-        if (speaker < 1 or speaker >= len(speakers)):
+        if (speaker < 1 or speaker > len(speakers)):
             print(str(speaker) + ": not a valid speaker index")
             continue
 
