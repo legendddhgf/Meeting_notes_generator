@@ -44,12 +44,14 @@ except FileNotFoundError:
     print("Successfully opened new file for writing: " +
             sys.argv[len(sys.argv) - 1])
 else:
-    over_write = input("Overwrite file " +
+    over_write = input("Append to file " +
             sys.argv[len(sys.argv) - 1] + "? [!y]: ")
     if (over_write != 'y' and over_write != 'Y'):
         raise SystemExit("Exiting program")
 
-out = open(sys.argv[len(sys.argv) - 1], 'w')
+out = open(sys.argv[len(sys.argv) - 1], 'a')
+
+out.write("\n")
 
 while(True):
     cmd = input("Enter a command ('h' for help): ")
