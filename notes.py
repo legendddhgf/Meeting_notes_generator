@@ -5,6 +5,25 @@ from time import gmtime, strftime
 
 speakers = []
 
+def wrap_statements(speakerstr1, speakerstr2, buf): # assumes correctly format
+  returnstr = ""
+  bufptr = 0
+  curline = 1
+  returnstr += '-' * 100 + '\n'
+  while(bufptr < len(buf)):
+
+
+    ## TODO:CONTINUE
+    count = 0
+    while (True): # get the size of the line into count variable
+      if (buf[bufptr + count] == '\n'):
+        break;
+    # loop for putting the characters, shouldn't leave till it just jumped over
+    # a newline
+    if (buf[bufptr] == '\n'): # warning, assumes unix style endings
+      
+  return returnstr
+
 def print_speakers():
     print('List of speakers:')
     for i in range(0, len(speakers)):
@@ -75,19 +94,25 @@ while(True):
 
         print("Note will be saved upon entering of blank line")
 
+        buf = ""; # buffer for the group of notes
         while(True):
             
             line = input(sys.argv[len(sys.argv) - 1] + " > ")
             
             if (len(line) < 1):
-                out.write(" - " + speakers[speaker - 1] +
-                        strftime(" %Y-%m-%d :: %H:%M:%S\n\n"))
-                break
+              speakerstr1 = "| " + speakers[speaker - 1]
+              speakerstr2 = "| " + strftime(" %Y-%m-%d :: %H:%M:%S"))
+              while (len(speakerstr1) > len(speakerstr2)):
+                speakerstr2 += ' ' # make str2 atleast size of str1
+              while (len(speakerstr1) < len(speakerstr2)):
+                speakerstr1 += ' ' # make str1 atleast size of str2
+              speakerstr1 += " | "
+              speakerstr2 += " | "
+              out.write(wrap_statements(speakerstr1, speakerstr2, buf))
+              buf = "" # clear buffer
+              break
 
-            out.write(line + '\n')
-
-
-
+            buf += line + '\n' # if the line exists
     elif (cmd == 'e'):
         out.close()
         raise SystemExit(sys.argv[len(sys.argv) - 1] + ": written")
