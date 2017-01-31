@@ -10,18 +10,18 @@ def wrap_statements(speakerstr1, speakerstr2, buf): # assumes correctly format
   bufptr = 0
   curline = 1
   returnstr += '-' * 100 + '\n'
-  while(bufptr < len(buf)):
+  while(False and bufptr < len(buf)):
 
 
     ## TODO:CONTINUE
     count = 0
     while (True): # get the size of the line into count variable
       if (buf[bufptr + count] == '\n'):
-        break;
+        break
     # loop for putting the characters, shouldn't leave till it just jumped over
     # a newline
     if (buf[bufptr] == '\n'): # warning, assumes unix style endings
-      
+      returnstr += " |"
   return returnstr
 
 def print_speakers():
@@ -101,7 +101,7 @@ while(True):
             
             if (len(line) < 1):
               speakerstr1 = "| " + speakers[speaker - 1]
-              speakerstr2 = "| " + strftime(" %Y-%m-%d :: %H:%M:%S"))
+              speakerstr2 = "| " + strftime(" %Y-%m-%d :: %H:%M:%S")
               while (len(speakerstr1) > len(speakerstr2)):
                 speakerstr2 += ' ' # make str2 atleast size of str1
               while (len(speakerstr1) < len(speakerstr2)):
